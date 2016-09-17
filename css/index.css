@@ -1,0 +1,11 @@
+html, body{
+    overflow-y: hidden;
+    overflow-x: auto;
+    margin: 0 !important;
+}
+
+.musicpreview {
+    position: relative;
+    height: 100vh;
+    background-image: -webkit-linear-gradient(bottom, rgba(62, 247, 105, 1), rgba(91, 30, 914, 0.74902) 100%);
+}
