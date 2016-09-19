@@ -1,0 +1,56 @@
+<html>
+<head>
+<script src="two.min.js"></script>
+<title>
+	Animation
+</title>
+</head>
+<body>
+<p id="draw shapes">
+<button onclick="draw()">Start</button>
+</p>
+</body>
+<script>
+var draw=function()
+{
+	var elem = document.getElementById('draw shapes');
+	var params = {width:1000,height:1000};
+	var two = new Two(params).appendTo(elem);
+
+	var circle = two.makeCircle(50, 50, 50);
+	var rect = two.makeRectangle(0, 0, 100, 100);
+	
+	circle.fill = '#FF8000';
+	//circle.stroke='orangered';
+	//circle.linewidth = 5;
+
+	rect.fill = 'rgb(0, 200, 255)';
+	rect.opcaity=0.75;
+	//rect.stroke='#1C75BC';
+	
+	var group = two.makeGroup(circle,rect);
+	
+	group.translation.set(two.width/2,two.height/2);
+	//group.rotation = Math.PI;
+	group.scale=0;
+	group.noStroke();
+	
+	//group.linewidth=7;
+	two.bind('update',function(frameCount)
+	{
+		if(group.scale >0.9999)
+		{
+			group.scale=group.rotation=0;
+		}
+		var t = (1-group.scale)*0.125;
+		group.scale +=t;
+		group.rotation+=t*4*Math.PI;
+	}).play();
+	
+
+	
+	
+	//two.update();
+}
+</script>
+</html>
